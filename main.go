@@ -14,7 +14,7 @@ import (
 )
 
 const (
-	sampleRate   = 44100
+	sampleRate   = 22050
 	screenWidth  = 240
 	screenHeight = 320
 )
