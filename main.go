@@ -3,11 +3,13 @@ package main
 import (
 	"log"
 
-	sounds "github.com/glmaljkovich/ebiten-audio-test/sounds"
+	"github.com/glmaljkovich/ebiten-audio-test/sounds"
 
 	"github.com/hajimehoshi/ebiten"
 	"github.com/hajimehoshi/ebiten/audio"
-	"github.com/hajimehoshi/ebiten/audio/mp3"
+
+	// "github.com/hajimehoshi/ebiten/audio/mp3"
+	"github.com/hajimehoshi/ebiten/audio/vorbis"
 	"github.com/hajimehoshi/ebiten/ebitenutil"
 )
 
@@ -36,7 +38,8 @@ func loadAudio(src []byte) *audio.Player {
 	audioContext, _ := audio.NewContext(sampleRate)
 	file := audio.BytesReadSeekCloser(src)
 
-	sound, err := mp3.Decode(audioContext, file)
+	// sound, err := mp3.Decode(audioContext, file)
+	sound, err := vorbis.Decode(audioContext, file)
 	logErrorAndExit(err)
 	player, err := audio.NewPlayer(audioContext, sound)
 	logErrorAndExit(err)
